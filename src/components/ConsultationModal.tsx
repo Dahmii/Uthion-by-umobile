@@ -166,12 +166,12 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
 
             {!submitted ?
           <div className="p-8 md:p-12">
-                <div className="flex items-center mb-4">
+                {/* <div className="flex items-center mb-4">
                   <span className="w-8 h-[1px] bg-accent mr-4" />
                   <span className="text-xs font-medium tracking-[0.2em] uppercase text-ink.muted">
                     Request a Consultation
                   </span>
-                </div>
+                </div> */}
                 <h2
               id="consultation-title"
               className="font-display text-3xl md:text-4xl text-ink leading-tight mb-3">
