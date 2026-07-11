@@ -1,3 +1,4 @@
+import { UnderConstruction } from './components/UnderConstruction';
 import { ConsultationProvider } from './context/ConsultationContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -13,39 +14,41 @@ import { CtaBlock } from './components/CtaBlock';
 import { Footer } from './components/Footer';
 export function App() {
   return (
-    <ConsultationProvider>
-      <div className="min-h-screen bg-paper font-sans text-ink selection:bg-accent selection:text-white">
-        <Navbar />
-        <main>
-          <Hero />
-          {/* <CaseStudies /> */}
-          <WhatWeDo />
-          <Process />
-          <Sectors />
-          <CtaBlock
-            eyebrow="Engage Uthion"
-            heading="Considering a strategic move in your sector?"
-            body="Our partners advise on the capital and operational decisions that define market leaders." />
+    <UnderConstruction />
+    // <ConsultationProvider>
+    //   <div className="min-h-screen bg-paper font-sans text-ink selection:bg-accent selection:text-white">
+    //     <Navbar />
+    //     <main>
+    //       <Hero />
+    //       {/* <CaseStudies /> */}
+    //       <WhatWeDo />
+    //       <Process />
+    //       <Sectors />
+    //       <CtaBlock
+    //         eyebrow="Engage Uthion"
+    //         heading="Considering a strategic move in your sector?"
+    //         body="Our partners advise on the capital and operational decisions that define market leaders." />
           
-          <Testimonials />
-          {/* <Leadership /> */}
-          {/* <CtaBlock
-            variant="dark"
-            eyebrow="Partner With Us"
-            heading="Work directly with our advisory partners."
-            body="We take on a select number of engagements to ensure every client receives senior-level attention." /> */}
+    //       <Testimonials />
+    //       {/* <Leadership /> */}
+    //       {/* <CtaBlock
+    //         variant="dark"
+    //         eyebrow="Partner With Us"
+    //         heading="Work directly with our advisory partners."
+    //         body="We take on a select number of engagements to ensure every client receives senior-level attention." /> */}
           
-          {/* <Insights /> */}
-          <Contact />
-          {/* <CtaBlock
-            variant="feature"
-            eyebrow="Begin the Conversation"
-            heading="Structure your next chapter of growth."
-            body="Tell us about your business objectives and our advisory team will review your request and recommend next steps." /> */}
+    //       {/* <Insights /> */}
+    //       <Contact />
+    //       {/* <CtaBlock
+    //         variant="feature"
+    //         eyebrow="Begin the Conversation"
+    //         heading="Structure your next chapter of growth."
+    //         body="Tell us about your business objectives and our advisory team will review your request and recommend next steps." /> */}
           
-        </main>
-        <Footer />
-      </div>
-    </ConsultationProvider>);
+    //     </main>
+    //     <Footer />
+    //   </div>
+    // </ConsultationProvider>
+    );
 
 }
