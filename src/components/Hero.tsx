@@ -1,114 +1,98 @@
 import { motion } from 'framer-motion';
 import { useConsultation } from '../context/ConsultationContext';
+
 export function Hero() {
   const { open } = useConsultation();
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el)
-    el.scrollIntoView({
-      behavior: 'smooth'
-    });
+
+  // Premium, buttery ease-out transition
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.15,
+      },
+    },
   };
-  
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center pt-32 pb-16 overflow-hidden bg-paper">
-      <div className="max-w-container mx-auto px-6 md:px-12 w-full relative z-10 flex-grow flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full">
-          {/* Left: Value proposition + CTAs */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20
-            }}
-            animate={{
-              opacity: 1,
-              y: 0
-            }}
-            transition={{
-              duration: 0.8,
-              ease: 'easeOut'
-            }}
-            className="lg:col-span-6 order-2 lg:order-1">
-            
-           
-            <h1 className="font-display text-5xl md:text-6xl lg:text-[4.5rem] leading-[1.02] text-ink font-thin tracking-tightest mb-8">
-              Growth doesn't happen by {' '}
-              <span className="italic font-normal text-accent font-serif tracking-normal">chance.</span>{' '}
-              <strong className="font-black tracking-tighter block mt-2 text-balance">
-                  We help businesses scale with strategy.
-              </strong>
-            </h1>
+    <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center pt-36 sm:pt-32 pb-20 overflow-hidden bg-paper">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8 md:px-12 w-full relative z-10 flex-grow flex items-center justify-center">
+        
+        {/* Centered Typography Wrapper */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="text-center flex flex-col items-center justify-center w-full"
+        >
+          {/* Main Heading - Balanced sizing and line-height for mobile */}
+          <motion.h1 
+            variants={itemVariants}
+            className="font-display text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.15] sm:leading-[1.08] text-ink font-thin tracking-tight sm:tracking-tightest mb-6 sm:mb-8 max-w-3xl"
+          >
+            Growth doesn't happen by{' '}
+            <span className="italic font-normal text-accent font-serif tracking-normal block sm:inline">
+              chance.
+            </span>{' '}
+            <strong className="font-black tracking-tight sm:tracking-tighter block mt-3 sm:mt-4 text-balance text-ink">
+              We help businesses scale with strategy.
+            </strong>
+          </motion.h1>
 
-            {/* <p className="text-lg text-ink.soft leading-relaxed max-w-xl mb-10">
-              Uthion partners with ambitious enterprises—securing capital,
-              sharpening strategy, and institutionalizing the operations that
-              turn growth into lasting market dominance.
-            </p> */}
+          {/* Subtext Paragraph - Explicit text-balance to avoid awkward 1-word line wraps */}
+          <motion.p 
+            variants={itemVariants}
+            className="text-[0.95rem] sm:text-lg text-stone-600 dark:text-ink/70 leading-relaxed max-w-xl mb-10 px-2 sm:px-0 text-balance"
+          >
+            Uthion partners with ambitious enterprises—securing capital,
+            sharpening strategy, and institutionalizing the operations that
+            turn growth into lasting market dominance.
+          </motion.p>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-16">
-              <button
-                onClick={open}
-                className="group inline-flex items-center bg-ink text-white px-8 py-4 text-sm font-medium rounded-full hover:bg-accent transition-colors">
-                
-                Request a Consultation
-                <svg
-                  className="ml-2 transition-transform group-hover:translate-x-1"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5">
-                  
-                  <path
-                    d="M3 8H13M13 8L9 4M13 8L9 12"
-                    strokeLinecap="round"
-                    strokeLinejoin="round" />
-                  
-                </svg>
-              </button>
-              
-            </div>
-
-            
+          {/* Mobile-Responsive Call To Action */}
+          <motion.div 
+            variants={itemVariants}
+            className="w-full sm:w-auto flex justify-center"
+          >
+            <button
+              onClick={open}
+              className="group w-full sm:w-auto inline-flex items-center justify-center bg-ink text-white px-8 py-4 text-base sm:text-sm font-medium rounded-full hover:bg-accent transition-colors shadow-sm hover:shadow-md"
+            >
+              Request a Consultation
+              <svg
+                className="ml-2 transition-transform group-hover:translate-x-1"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
+                <path
+                  d="M3 8H13M13 8L9 4M13 8L9 12"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </motion.div>
+        </motion.div>
 
-          {/* Right: Business-focused visual */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0.95
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1
-            }}
-            transition={{
-              duration: 1,
-              ease: 'easeOut',
-              delay: 0.2
-            }}
-            className="lg:col-span-6 order-1 lg:order-2 relative">
-            
-            <div className="relative w-full aspect-[4/5] max-w-lg mx-auto lg:ml-auto">
-              <img
-                src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?auto=format&fit=crop&q=80&w=1000"
-                alt="Advisory leadership in strategic discussion"
-                className="w-full h-full object-cover grayscale-[15%]" />
-              
-              {/* Thin corner framing */}
-              <div className="absolute -top-6 -left-6 w-24 h-[1px] bg-stone"></div>
-              <div className="absolute -top-6 -left-6 w-[1px] h-24 bg-stone"></div>
-              <div className="absolute -bottom-6 -right-6 w-24 h-[2px] bg-accent"></div>
-              <div className="absolute -bottom-6 -right-6 w-[2px] h-24 bg-accent"></div>
-            </div>
-          </motion.div>
-        </div>
       </div>
-
-     
-      
-    </section>);
-
+    </section>
+  );
 }
