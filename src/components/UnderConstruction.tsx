@@ -1,4 +1,3 @@
-import React from 'react';
 
 export function UnderConstruction() {
   return (
@@ -22,9 +21,9 @@ export function UnderConstruction() {
         </div>
       </div>
 
-      {/* Yellow Construction Tape (Bottom Left to Right) */}
+      {/* Yellow tape */}
       <div className="absolute bottom-12 left-[-10%] right-[-10%] h-12 bg-[#facc15] shadow-lg flex items-center justify-center overflow-hidden rotate-[-3deg] select-none pointer-events-none">
-        {/* Repeating Hazard Stripe Pattern */}
+        
         <div 
           className="absolute inset-0 opacity-20 w-[200%]" 
           style={{
@@ -32,7 +31,7 @@ export function UnderConstruction() {
             backgroundSize: '40px 40px'
           }}
         />
-        {/* Tape Bold Text Overlay */}
+        
         <span className="font-mono text-xs font-black tracking-widest text-black/80 uppercase whitespace-nowrap mx-4">
           UNDER CONSTRUCTION &bull; CAUTION &bull; BUILDING SYSTEM &bull; UNDER CONSTRUCTION &bull; CAUTION &bull; BUILDING SYSTEM
         </span>
