@@ -65,13 +65,13 @@ export function Contact() {
             <div className="space-y-8">
               <div>
                 <span className="block text-xs font-semibold tracking-widest uppercase text-ink.muted mb-2">
-                  New Business & Advisory
+                  Email
                 </span>
                 <a
-                  href="mailto:advisory@uthion.com"
+                  href="mailto:info@uthion.com"
                   className="text-lg text-ink hover:text-accent transition-colors font-medium">
                   
-                  advisory@uthion.com
+                  info@uthion.com
                 </a>
               </div>
               <div>
@@ -79,11 +79,9 @@ export function Contact() {
                   Global Headquarters
                 </span>
                 <p className="text-ink.soft leading-relaxed">
-                  One World Trade Center
+                  Lagos
                   <br />
-                  Suite 6500
-                  <br />
-                  New York, NY 10007
+                  lagos, Nigeria
                 </p>
                 <a
                   href="tel:+12125550198"

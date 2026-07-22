@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useConsultation } from '../context/ConsultationContext';
 
 export function Navbar() {
-  const { open } = useConsultation();
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false); // State to handle mobile menu visibility
 
@@ -36,31 +34,37 @@ export function Navbar() {
         
         {/* Logo */}
         <div className="flex items-center w-8 space-x-4 md:space-x-6 z-50">
-          <img src="./ulogo.svg" alt="Uthion Logo" className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+          <img 
+            src="./ulogo.svg" 
+            alt="Uthion Logo" 
+            className="cursor-pointer" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+          />
         </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-8 text-sm font-medium text-ink.soft">
-          <button onClick={() => scrollTo('what-we-do')} className="hover:text-accent transition-colors">Expertise</button>
-          <button onClick={() => scrollTo('process')} className="hover:text-accent transition-colors">Process</button>
-          <button onClick={() => scrollTo('sectors')} className="hover:text-accent transition-colors">Industries</button>
-          <button onClick={() => scrollTo('contact')} className="hidden lg:inline-block text-sm font-medium text-ink hover:text-accent transition-colors">Contact</button>
-        </div>
-
-        {/* Action Buttons & Mobile Toggle */}
-        <div className="flex items-center space-x-4 md:space-x-6 z-50">
+        {/* Right-aligned Navigation & Mobile Toggle Wrapper */}
+        <div className="flex items-center space-x-8">
           
-          <button
-            onClick={open}
-            className="hidden lg:inline-block bg-ink text-white px-4 md:px-6 py-2.5 text-xs md:text-sm font-medium rounded-full hover:bg-accent transition-colors whitespace-nowrap"
-          >
-            Request a Consultation
-          </button>
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center space-x-8 text-sm font-medium text-ink.soft">
+            <button onClick={() => scrollTo('what-we-do')} className="hover:text-accent transition-colors">
+              Expertise
+            </button>
+            <button onClick={() => scrollTo('process')} className="hover:text-accent transition-colors">
+              Process
+            </button>
+            <button onClick={() => scrollTo('sectors')} className="hover:text-accent transition-colors">
+              Industries
+            </button>
+            <button onClick={() => scrollTo('contact')} className="hover:text-accent transition-colors">
+              Contact
+            </button>
+          </div>
 
-          {/* Hamburger Menu Toggle Button */}
+          {/* Mobile Hamburger Toggle Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-ink focus:outline-none"
+            className="lg:hidden p-2 text-ink focus:outline-none z-50"
             aria-label="Toggle Menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,6 +78,7 @@ export function Navbar() {
             </svg>
           </button>
         </div>
+
       </div>
 
       {/* Mobile Menu Slide-down Overlay */}
@@ -83,10 +88,18 @@ export function Navbar() {
         }`}
       >
         <div className="flex flex-col p-6 space-y-5 text-base font-medium text-ink">
-          <button onClick={() => scrollTo('what-we-do')} className="text-left py-2 border-b border-stone/30 hover:text-accent">Expertise</button>
-          <button onClick={() => scrollTo('process')} className="text-left py-2 border-b border-stone/30 hover:text-accent">Process</button>
-          <button onClick={() => scrollTo('sectors')} className="text-left py-2 border-b border-stone/30 hover:text-accent">Industries</button>
-          <button onClick={() => scrollTo('contact')} className="text-left py-2 text-ink.soft hover:text-accent">Contact</button>
+          <button onClick={() => scrollTo('what-we-do')} className="text-left py-2 border-b border-stone/30 hover:text-accent">
+            Expertise
+          </button>
+          <button onClick={() => scrollTo('process')} className="text-left py-2 border-b border-stone/30 hover:text-accent">
+            Process
+          </button>
+          <button onClick={() => scrollTo('sectors')} className="text-left py-2 border-b border-stone/30 hover:text-accent">
+            Industries
+          </button>
+          <button onClick={() => scrollTo('contact')} className="text-left py-2 text-ink.soft hover:text-accent">
+            Contact
+          </button>
         </div>
       </div>
     </nav>

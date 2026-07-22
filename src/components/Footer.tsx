@@ -77,38 +77,22 @@ export function Footer() {
               Industries
             </h4>
             <ul className="space-y-4 text-sm text-stone/80">
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Real Estate
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Aviation
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Financial Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-accent transition-colors">
-                  Technology
-                </a>
-              </li>
+              <li> Real Estate  </li>
+              <li> Aviation </li>
+              <li> Financial Services </li>
+              <li> Technology </li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-xs font-semibold tracking-widest uppercase text-stone/40 mb-6">
-              Global Offices
+              Locations
             </h4>
             <ul className="space-y-4 text-sm text-stone/80">
-              <li>New York</li>
-              <li>London</li>
-              <li>Singapore</li>
-              <li>Dubai</li>
+              <li>Lagos</li>
+              <li>Abuja</li>
+              <li>Ibadan</li>
+              <li>Portharcourt</li>
             </ul>
           </div>
         </div>
