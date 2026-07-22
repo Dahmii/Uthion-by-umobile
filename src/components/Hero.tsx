@@ -58,9 +58,7 @@ export function Hero() {
             variants={itemVariants}
             className="text-[0.95rem] sm:text-lg text-stone-600 dark:text-ink/70 leading-relaxed max-w-xl mb-10 px-2 sm:px-0 text-balance"
           >
-            Uthion partners with ambitious enterprises—securing capital,
-            sharpening strategy, and institutionalizing the operations that
-            turn growth into lasting market dominance.
+             Uthion partners with ambitious businesses to secure capital, refine strategy, and build the capabilities that enable sustainable growth.
           </motion.p>
 
           {/* Mobile-Responsive Call To Action */}

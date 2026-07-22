@@ -11,35 +11,35 @@ export function Sectors() {
   {
     title: 'Aviation',
     description:
-    'Navigating regulatory complexity and financing fleet expansion.',
+    'Supporting strategic growth through regulatory and capital advisory.',
     image:
     'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=800'
   },
   {
     title: 'Financial Services',
     description:
-    'Institutionalizing operations for wealth managers and fintech disruptors.',
+    'Helping financial institutions stay competitive in a rapidly evolving market.',
     image:
     'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=800'
   },
   {
     title: 'Technology',
     description:
-    'Accelerating growth and structuring exits for enterprise SaaS leaders.',
+    'Helping technology companies scale and strengthen their competitive position.',
     image:
     'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800'
   },
   {
     title: 'Manufacturing',
     description:
-    'Driving supply chain resilience and funding facility modernization.',
+    'Strengthening operations and building more resilient supply chains.',
     image:
     'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800'
   },
   {
     title: 'Energy',
     description:
-    'Structuring capital for transition initiatives and infrastructure projects.',
+    'Structuring capital for infrastructure and strategic energy investments.',
     image:
     'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=800'
   }];
@@ -50,12 +50,11 @@ export function Sectors() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-20">
           <div>
             <h2 className="font-display text-4xl md:text-5xl text-ink max-w-2xl leading-tight">
-              Sectors where we drive market dominance.
+               Industries We Serve 
             </h2>
           </div>
           <p className="text-sm text-ink.soft max-w-sm mt-6 md:mt-0">
-            Through our advisory, we create institutional frameworks and secure
-            capital for leaders in complex, high-stakes industries.
+            Our experience spans multiple industries, helping businesses strengthen strategy, secure funding, and improve performance.
           </p>
         </div>
 

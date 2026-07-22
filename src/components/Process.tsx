@@ -5,19 +5,19 @@ export function Process() {
     number: '01',
     title: 'Discover',
     description:
-    'We conduct a deep-dive diagnostic of your current capital structure, operational bottlenecks, and market positioning to identify high-leverage growth opportunities.'
+    'We work with you to understand your business, identify key challenges, and uncover opportunities for growth.'
   },
   {
     number: '02',
     title: 'Strategize',
     description:
-    'Our partners develop a bespoke, actionable roadmap—aligning financial structuring with corporate strategy to ensure every initiative drives measurable enterprise value.'
+    'We work along side your team to implement initiatives and deliver measurable results.'
   },
   {
     number: '03',
     title: 'Execute',
     description:
-    'We move beyond advisory into implementation, working alongside your leadership team to secure funding, optimize processes, and drive strategic initiatives forward.'
+    'We help build the systems, processes, and capabilities needed to support long-term growth.'
   },
   {
     number: '04',
@@ -32,7 +32,7 @@ export function Process() {
         <div className="mb-20">
           
           <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight max-w-2xl">
-            A rigorous framework for institutional growth.
+            Our approach to helping businessses scale.
           </h2>
         </div>
 

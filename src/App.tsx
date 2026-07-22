@@ -26,8 +26,8 @@ export function App() {
           <Sectors />
           <CtaBlock
             eyebrow="Engage Uthion"
-            heading="Considering a strategic move in your sector?"
-            body="Our partners advise on the capital and operational decisions that define market leaders." />
+            heading="planning your next strategic move?"
+            body="We help businesses make confident decisions about growth, capital, and operations." />
           
           <Testimonials />
           {/* <Leadership /> */}

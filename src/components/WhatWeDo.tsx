@@ -39,12 +39,10 @@ export function WhatWeDo() {
            
 
             <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-8">
-              Everything your enterprise needs to scale.
+              Everything your business needs to scale.
             </h2>
             <p className="text-lg text-ink.soft leading-relaxed mb-12 max-w-md">
-              From the initial capital raise to final execution—we partner with
-              market leaders to optimize strategy and institutionalize
-              operational excellence.
+              Everything your business needs to scale. From securing growth capital to executing strategy, we partner with businesses to build the capabilities and systems needed for sustainable growth.
             </p>
 
             <div className="hidden lg:block relative h-[400px] w-full mt-12">
