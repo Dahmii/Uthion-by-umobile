@@ -85,7 +85,7 @@ export function Hero() {
           >
               <button
                 onClick={open}
-                className="group relative inline-flex items-center justify-center bg-transparent text-black border-2 border-black px-8 py-4 text-base sm:text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#3300FF] hover:border-[#3300FF] hover:text-white hover:shadow-lg hover:shadow-[#3300FF]/25 active:scale-95 cursor-pointer"
+                className="group relative inline-flex items-center justify-center bg-transparent text-black border-2 border-black px-5 py-2.5 sm:px-8 sm:py-4 text-xs sm:text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#3300FF] hover:border-[#3300FF] hover:text-white hover:shadow-lg hover:shadow-[#3300FF]/25 active:scale-95 cursor-pointer"
               >  
                 <span className="relative z-10 flex items-center">
                     Request a Consultation
