@@ -24,10 +24,10 @@ export function App() {
           <WhatWeDo />
           <Process />
           <Sectors />
-          <CtaBlock
+          {/* <CtaBlock
             eyebrow="Engage Uthion"
             heading="planning your next strategic move?"
-            body="We help businesses make confident decisions about growth, capital, and operations." />
+            body="We help businesses make confident decisions about growth, capital, and operations." /> */}
           
           <Testimonials />
           {/* <Leadership /> */}
