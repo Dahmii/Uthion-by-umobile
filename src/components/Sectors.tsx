@@ -50,7 +50,13 @@ export function Sectors() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-20">
           <div>
             <h2 className="font-display text-4xl md:text-5xl text-ink max-w-2xl leading-tight">
-               Industries We Serve 
+               Industries We {' '}
+               <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal">
+                 Serve 
+                 <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#3300FF]/30 overflow-visible" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
+                <path d="M0 8 Q 50 0, 100 8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+              </svg> {' '}
+               </span>
             </h2>
           </div>
           <p className="text-sm text-ink.soft max-w-sm mt-6 md:mt-0">
@@ -88,9 +94,7 @@ export function Sectors() {
                 <div className="absolute inset-0 bg-ink/10 group-hover:bg-transparent transition-colors duration-500"></div>
               </div>
               <div className="flex items-start">
-                <span className="text-xs tracking-widest uppercase mr-3 mt-1 text-accent">
-                  »
-                </span>
+               
                 <div>
                   <h3 className="font-display text-2xl text-ink mb-2 group-hover:text-accent transition-colors">
                     {sector.title}

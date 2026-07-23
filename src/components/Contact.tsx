@@ -20,7 +20,13 @@ export function Contact() {
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ink leading-tight mb-6">
-              Ready to structure your next strategic move?
+              Ready to structure your next 
+              <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal">
+              strategic move?
+              <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#3300FF]/30 overflow-visible" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
+                <path d="M0 8 Q 50 0, 100 8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+              </svg>
+              </span>
             </h2>
             <p className="text-lg text-ink.soft leading-relaxed mb-10 max-w-md">
               Schedule a confidential consultation with our partners to discuss
@@ -31,7 +37,7 @@ export function Contact() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={open}
-                className="bg-ink text-white px-8 py-4 text-sm font-medium rounded-full hover:bg-accent transition-colors inline-flex items-center justify-center">
+                className="bg-[#3300FF] text-white px-8 py-4 text-sm font-medium rounded-full hover:bg-[#2a00cc] hover:shadow-lg hover:shadow-[#3300FF]/25 active:scale-95 transition-colors inline-flex items-center justify-center">
                 
                 Request a Consultation
                 <svg
@@ -76,7 +82,7 @@ export function Contact() {
               </div>
               <div>
                 <span className="block text-xs font-semibold tracking-widest uppercase text-ink.muted mb-2">
-                  Global Headquarters
+                  Address
                 </span>
                 <p className="text-ink.soft leading-relaxed">
                   Lagos
@@ -87,7 +93,7 @@ export function Contact() {
                   href="tel:+12125550198"
                   className="block mt-2 text-ink hover:text-accent transition-colors">
                   
-                  +1 (212) 555-0198
+                   +234 (0) 905 9535 353
                 </a>
               </div>
             </div>

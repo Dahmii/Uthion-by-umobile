@@ -39,7 +39,16 @@ export function WhatWeDo() {
            
 
             <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight mb-8">
-              Everything your business needs to scale.
+              Everything your business {' '} 
+              
+              <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal">
+                needs
+                <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#3300FF]/30 overflow-visible" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
+                    <path d="M0 8 Q 50 0, 100 8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                </svg>
+              </span>{' '}
+              
+               to scale.
             </h2>
             <p className="text-lg text-ink.soft leading-relaxed mb-12 max-w-md">
               Everything your business needs to scale. From securing growth capital to executing strategy, we partner with businesses to build the capabilities and systems needed for sustainable growth.

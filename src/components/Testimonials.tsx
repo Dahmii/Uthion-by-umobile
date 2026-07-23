@@ -10,7 +10,14 @@ export function Testimonials() {
           <div className="lg:col-span-5">
             
             <h2 className="font-display text-4xl md:text-5xl leading-tight mb-8">
-              "Uthion doesn't just advise; they architect the future of the
+              "
+              <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal">
+              Uthion
+              <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#3300FF]/30 overflow-visible" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
+                <path d="M0 8 Q 50 0, 100 8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+              </svg> 
+              </span>{' '}
+               doesn't just advise; they architect the future of the
               enterprise."
             </h2>
             <p className="text-stone/70 leading-relaxed mb-10">

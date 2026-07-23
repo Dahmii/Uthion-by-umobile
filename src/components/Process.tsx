@@ -32,7 +32,14 @@ export function Process() {
         <div className="mb-20">
           
           <h2 className="font-display text-4xl md:text-5xl text-ink leading-tight max-w-2xl">
-            Our approach to helping businessses scale.
+            Our approach to {' '} 
+            <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal">
+              helping
+              <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#3300FF]/30 overflow-visible" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
+                <path d="M0 8 Q 50 0, 100 8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+              </svg>
+            </span>
+             businessses scale.
           </h2>
         </div>
 
