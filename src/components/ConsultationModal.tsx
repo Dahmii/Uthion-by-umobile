@@ -23,11 +23,6 @@ const COMPANY_SIZES = [
 '1,001–5,000 employees',
 '5,000+ employees'];
 
-const SERVICES = [
-'Capital Structuring',
-'Corporate Strategy',
-'Organizational Transformation',
-'M&A Advisory'];
 
 interface FormState {
   fullName: string;
@@ -84,13 +79,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
     ...f,
     [key]: value
   }));
-  const toggleService = (service: string) =>
-  setForm((f) => ({
-    ...f,
-    services: f.services.includes(service) ?
-    f.services.filter((s) => s !== service) :
-    [...f.services, service]
-  }));
+ 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // In production this would POST to an advisory intake endpoint / CRM.
@@ -285,24 +274,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     </div>
                   </div>
 
-                  <div>
-                    <span className={labelClass}>Services of Interest</span>
-                    <div className="flex flex-wrap gap-3 mt-2">
-                      {SERVICES.map((service) => {
-                    const active = form.services.includes(service);
-                    return (
-                      <button
-                        type="button"
-                        key={service}
-                        onClick={() => toggleService(service)}
-                        className={`text-sm px-4 py-2 rounded-full border transition-colors ${active ? 'border-accent bg-accent text-white' : 'border-stone text-ink.soft hover:border-ink'}`}>
-                        
-                            {service}
-                          </button>);
-
-                  })}
-                    </div>
-                  </div>
+                 
 
                   <div>
                     <label className={labelClass} htmlFor="challenge">
