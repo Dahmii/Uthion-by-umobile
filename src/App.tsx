@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Process } from './components/Process';
 import { WhatWeDo } from './components/WhatWeDo';
+import { WhyChooseUs } from './components/WhyChooseUs';
 import { Sectors } from './components/Sectors';
 import { CaseStudies } from './components/CaseStudies';
 import { Testimonials } from './components/Testimonials';
@@ -22,6 +23,7 @@ export function App() {
           <Hero />
           {/* <CaseStudies /> */}
           <WhatWeDo />
+          <WhyChooseUs />
           <Process />
           <Sectors />
           {/* <CtaBlock
