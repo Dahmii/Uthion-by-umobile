@@ -51,7 +51,7 @@ export function WhatWeDo() {
                to scale.
             </h2>
             <p className="text-lg text-ink.soft leading-relaxed mb-12 max-w-md">
-              Everything your business needs to scale. From securing growth capital to executing strategy, we partner with businesses to build the capabilities and systems needed for sustainable growth.
+              From securing growth capital to executing strategy, we partner with businesses to build the capabilities and systems needed for sustainable growth.
             </p>
 
             <div className="hidden lg:block relative h-[400px] w-full mt-12">
