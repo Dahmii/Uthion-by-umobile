@@ -21,7 +21,7 @@ const COMPANY_SIZES = [
 '51–200 employees',
 '201–1,000 employees',
 '1,001–5,000 employees',
-'5,000+ employees'];
+'5,001+ employees'];
 
 
 interface FormState {
@@ -168,7 +168,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                   Tell us about your business objectives.
                 </h2>
                 <p className="text-ink.soft leading-relaxed mb-10 max-w-lg">
-                  Schedule a confidential consultation to discuss your business goals, operational challenges, and growth opportunities.
+                  Our advisory team will review your request and recommend next steps. We treat every inquiry with complete confidentiality.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-8">
@@ -276,7 +276,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
 
                   <div>
                     <label className={labelClass} htmlFor="challenge">
-                      Brief Description of Business Challenge
+                      Brief tell us about your business needs
                     </label>
                     <textarea
                   id="challenge"
@@ -285,7 +285,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                   value={form.challenge}
                   onChange={(e) => update('challenge', e.target.value)}
                   className={`${fieldClass} resize-none`}
-                  placeholder="Share the strategic objectives or challenges you'd like to discuss." />
+                  placeholder="Tell us about your business challenge, objective, or what you'd like to discuss." />
                 
                   </div>
 

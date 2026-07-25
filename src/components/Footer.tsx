@@ -8,9 +8,7 @@ export function Footer() {
               Uthion<span className="text-accent">.</span>
             </div>
             <p className="text-stone/60 text-sm leading-relaxed max-w-xs mb-8">
-              A premier strategic advisory firm partnering with market leaders
-              to secure funding, optimize strategy, and institutionalize
-              operational excellence.
+              A strategic advisory firm helping businesses secure capital, strengthen strategy, and build the capabilities needed for sustainable growth.
             </p>
             <div className="flex space-x-4">
               <a
@@ -77,24 +75,13 @@ export function Footer() {
               Industries
             </h4>
             <ul className="space-y-4 text-sm text-stone/80">
-              <li> Real Estate  </li>
+              <li> Financial Services  </li>
               <li> Aviation </li>
-              <li> Financial Services </li>
-              <li> Technology </li>
+              <li> Healthcare </li>
+              <li> Logistics </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-xs font-semibold tracking-widest uppercase text-stone/40 mb-6">
-              Locations
-            </h4>
-            <ul className="space-y-4 text-sm text-stone/80">
-              <li>Lagos</li>
-              <li>Abuja</li>
-              <li>Ibadan</li>
-              <li>Portharcourt</li>
-            </ul>
-          </div>
         </div>
 
         <div className="border-t border-stone/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-stone/50">

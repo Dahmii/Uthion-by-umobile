@@ -1,44 +1,36 @@
 import { motion } from 'framer-motion';
+import financialImage from '../assets/finance.jpg';
+import healthcareImage from '../assets/healthcare.jpg';
 
 export function Sectors() {
   const sectors = [
     {
       title: 'Financial Services',
-      description:
-        'Navigating complex regulatory landscapes, securing operational licenses, and structuring transformative transactions.',
       services: [
         'Business strategy development',
         'License application support',
         'Mergers & acquisitions advisory',
         'Talent sourcing',
       ],
-      image:
-        'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=800',
+      image: financialImage,
     },
     {
       title: 'Healthcare',
-      description:
-        'Empowering medical enterprises to scale infrastructure, optimize valuation, and secure vital growth capital.',
       services: [
         'Business planning and setup',
         'Business valuation',
         'Capital raising advisory',
       ],
-      image:
-        'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800',
+      image: healthcareImage,
     },
     {
       title: 'Aviation',
-      description:
-        'Structuring resilient, compliant operations built for long-term operational and capital efficiency.',
       services: ['Business structuring'],
       image:
         'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=800',
     },
     {
       title: 'Logistics',
-      description:
-        'Institutionalizing supply chain, transport, and freight enterprises for scalable expansion.',
       services: [
         'Company setup and structuring',
         'Business strategy development',
@@ -56,9 +48,8 @@ export function Sectors() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 sm:mb-20">
           <div>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-stone-950 max-w-2xl leading-[1.1] font-thin tracking-tight">
-              Where we've made a {' '}
-              <br/>
-              <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal">
+              Where we've made a <br />
+              <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal mt-1">
                 Difference.
                 <svg
                   className="absolute -bottom-1 left-0 w-full h-2 text-[#3300FF]/30 overflow-visible"
@@ -78,12 +69,12 @@ export function Sectors() {
             </h2>
           </div>
           <p className="text-sm sm:text-base text-stone-600 max-w-sm mt-6 md:mt-0 font-normal leading-relaxed">
-            We've worked alongside leaders across key industries, helping them solve critical structural challenges and scale efficiently.
+            Our experience spans multiple industries, helping businesses strengthen strategy, secure funding, and improve performance.
           </p>
         </div>
 
-        {/* Sectors Grid (Adjusts automatically from 1 to 2 columns) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 sm:gap-y-16">
+        {/* Sectors Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 sm:gap-y-16">
           {sectors.map((sector, index) => (
             <motion.div
               key={index}
@@ -95,7 +86,7 @@ export function Sectors() {
             >
               <div>
                 {/* Image Wrapper */}
-                <div className="relative h-[280px] sm:h-[340px] w-full overflow-hidden rounded-[1.5rem] mb-6 border border-stone-300/80">
+                <div className="relative h-[260px] sm:h-[320px] w-full overflow-hidden rounded-[1.5rem] mb-6 border border-stone-300/80">
                   <img
                     src={sector.image}
                     alt={sector.title}
@@ -104,26 +95,40 @@ export function Sectors() {
                   <div className="absolute inset-0 bg-stone-950/20 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
 
-                {/* Title & Description */}
-                <h3 className="font-display text-2xl sm:text-3xl text-stone-950 mb-3 font-bold group-hover:text-[#3300FF] transition-colors">
+                {/* Sector Title */}
+                <h3 className="font-display text-2xl sm:text-3xl text-stone-950 mb-5 font-bold group-hover:text-[#3300FF] transition-colors">
                   {sector.title}
                 </h3>
-                <p className="text-sm sm:text-base text-stone-600 leading-relaxed mb-6">
-                  {sector.description}
-                </p>
               </div>
 
-              {/* Service Highlights / Capability Badges */}
-              <div className="flex flex-wrap gap-2 pt-2 border-t border-stone-200/80">
+              {/* Vertical Checkmark List */}
+              <ul className="space-y-3 pt-4 border-t border-stone-200/80">
                 {sector.services.map((service, sIdx) => (
-                  <span
-                    key={sIdx}
-                    className="text-[0.75rem] font-medium text-stone-700 bg-stone-200/60 border border-stone-300/60 px-3 py-1 rounded-full group-hover:border-[#3300FF]/30 transition-colors"
-                  >
-                    • {service}
-                  </span>
+                  <li key={sIdx} className="flex items-center gap-3">
+                    {/* Checkmark Circle Icon */}
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-stone-200/80 border border-stone-300 flex items-center justify-center text-stone-900 group-hover:bg-[#3300FF] group-hover:border-[#3300FF] group-hover:text-white transition-all duration-300">
+                      <svg
+                        className="w-3 h-3"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        strokeWidth="3"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
+
+                    {/* Service Label */}
+                    <span className="text-sm sm:text-[0.95rem] font-medium text-stone-700 group-hover:text-stone-950 transition-colors">
+                      {service}
+                    </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </div>

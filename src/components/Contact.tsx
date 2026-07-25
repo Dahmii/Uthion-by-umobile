@@ -1,4 +1,4 @@
-import React from 'react';
+import { FaEnvelope, FaLocationDot, FaPhone } from 'react-icons/fa6';
 import { useConsultation } from '../context/ConsultationContext';
 export function Contact() {
   const { open } = useConsultation();
@@ -68,9 +68,7 @@ export function Contact() {
 
             <div className="space-y-8">
               <div>
-                <span className="block text-xs font-semibold tracking-widest uppercase text-ink.muted mb-2">
-                  Email
-                </span>
+                <FaEnvelope size={20} color="#333333" />
                 <a
                   href="mailto:info@uthion.com"
                   className="text-lg text-ink hover:text-accent transition-colors font-medium">
@@ -79,14 +77,14 @@ export function Contact() {
                 </a>
               </div>
               <div>
-                <span className="block text-xs font-semibold tracking-widest uppercase text-ink.muted mb-2">
-                  Address
-                </span>
+                <FaLocationDot size={20} color="#333333" />
                 <p className="text-ink.soft leading-relaxed">
-                  Lagos
-                  <br />
-                  lagos, Nigeria
+                  Lagos, Nigeria
                 </p>
+
+              </div>
+              <div>
+                <FaPhone size={20} color="#333333" />
                 <a
                   href="tel:+12125550198"
                   className="block mt-2 text-ink hover:text-accent transition-colors">

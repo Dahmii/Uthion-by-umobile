@@ -2,29 +2,19 @@ import { motion } from 'framer-motion';
 export function WhatWeDo() {
   const services = [
   {
-    id: '01',
     title: 'Capital Structuring',
-    problem: 'Inefficient capital stacks limit growth and increase risk.',
-    outcome:
-    'We secure optimal funding and structure capital to fuel ambitious expansion while protecting equity.',
+    points: 'Secure the right capital to fuel growth while managing financial risk.',
     details: ['Debt & Equity Financing', 'M&A Advisory', 'Restructuring']
   },
   {
-    id: '02',
     title: 'Corporate Strategy',
-    problem: 'Misaligned objectives lead to stagnant market share.',
-    outcome:
-    'We define clear market positioning and execute high-leverage initiatives that drive sustainable competitive advantage.',
+    points: 'Develop clear growth strategies that strengthen competitive positioning and drive long-term value.',
     details: ['Market Entry', 'Growth Roadmaps', 'Competitive Positioning']
   },
   {
-    id: '03',
     title: 'Organizational Transformation',
-    problem: 'Outdated operations break under the pressure of scale.',
-    outcome:
-    'We institutionalize operations, building resilient frameworks that support rapid scale and market dominance.',
-    details: [
-    'Operational Excellence',
+    points: 'Build the operation model and organizational capabilities needed to support sustainable growth.',
+    details: ['Operational Excellence',
     'Leadership Alignment',
     'Change Management']
 
@@ -91,24 +81,15 @@ export function WhatWeDo() {
                   <h3 className="font-display text-3xl text-ink group-hover:text-accent transition-colors">
                     {service.title}
                   </h3>
-                  <span className="text-sm font-medium text-ink.muted">
-                    {service.id}
-                  </span>
                 </div>
 
                 <div className="mb-6">
                   <p className="text-sm text-ink.muted mb-2">
-                    <strong className="text-ink font-medium">
-                      The Challenge:
-                    </strong>{' '}
-                    {service.problem}
+                    {service.points}
                   </p>
-                  <p className="text-sm text-ink.soft">
-                    <strong className="text-ink font-medium">
-                      Our Impact:
-                    </strong>{' '}
+                  {/* <p className="text-sm text-ink.soft">
                     {service.outcome}
-                  </p>
+                  </p> */}
                 </div>
 
                 <ul className="flex flex-wrap gap-3">

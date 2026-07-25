@@ -29,7 +29,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-36 pb-12 overflow-hidden bg-[#F8F7F4]">
+    <section className="relative min-h-screen flex flex-col justify-between pt-24 sm:pt-36 pb-12 overflow-hidden bg-[#F8F7F4]">
       
       {/* 1. Subtle Radial Gradient Glow in Center */}
       <div 
@@ -44,31 +44,32 @@ export function Hero() {
       />
 
       {/* Main Content Area */}
-      <div className="max-w-4xl mx-auto px-5 sm:px-8 md:px-12 w-full relative z-10 flex-grow flex items-center justify-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-center flex flex-col items-center justify-center w-full"
-        >
-          {/* Main Headline */}
-          <motion.h1 
-            variants={itemVariants}
-            className="font-display text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[5.25rem] leading-[1.08] text-stone-950 font-thin tracking-tight sm:tracking-tightest mb-8 max-w-3xl"
-          >
-            Growth doesn't happen by{' '}
-            <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal">
-              chance.
-              {/* Subtle underline curve */}
-              <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#3300FF]/30 overflow-visible" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
-                <path d="M0 8 Q 50 0, 100 8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-              </svg>
-            </span>{' '}
-            <strong className="font-black tracking-tight sm:tracking-tighter block mt-3 sm:mt-4 text-balance text-stone-900">
-              We help businesses scale with strategy.
-            </strong>
-          </motion.h1>
-
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 md:px-12 w-full relative z-10 flex-grow flex items-center justify-center">
+  <motion.div
+    variants={containerVariants}
+    initial="hidden"
+    animate="visible"
+    className="text-center flex flex-col items-center justify-center w-full"
+  >
+    {/* Main Headline */}
+    <motion.h1 
+      variants={itemVariants}
+      className="font-display text-[2.75rem] sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.08] text-stone-950 font-thin tracking-tight sm:tracking-tightest mb-6 max-w-4xl"
+    >
+      Growth doesn't happen by{' '}
+      <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal">
+        chance.
+        {/* Subtle underline curve */}
+        <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#3300FF]/30 overflow-visible" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
+          <path d="M0 8 Q 50 0, 100 8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+        </svg>
+      </span>
+      
+      {/* Reduced Font Size & Single Line Layout */}
+      <strong className="block mt-4 sm:mt-6 text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-stone-900 md:whitespace-nowrap">
+        We help businesses scale with strategy.
+      </strong>
+    </motion.h1>
           {/* Subtext Paragraph */}
           <motion.p 
             variants={itemVariants}
