@@ -102,9 +102,7 @@ export function WhyChooseUs() {
             </span>{' '}
             Uthion
           </h2>
-          <p className="font-sans text-stone-600 text-base sm:text-lg leading-relaxed max-w-xl">
-            Our commitment goes beyond standard consulting. We bring tier-one methodology tailored specifically to institutionalize and scale your growth.
-          </p>
+          
         </div>
 
         {/* Feature Cards Grid */}

@@ -168,9 +168,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                   Tell us about your business objectives.
                 </h2>
                 <p className="text-ink.soft leading-relaxed mb-10 max-w-lg">
-                  Our advisory team will review your request and recommend next
-                  steps. Every inquiry is treated with the utmost
-                  confidentiality.
+                  Schedule a confidential consultation to discuss your business goals, operational challenges, and growth opportunities.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-8">
@@ -186,7 +184,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     value={form.fullName}
                     onChange={(e) => update('fullName', e.target.value)}
                     className={fieldClass}
-                    placeholder="Jane Doe" />
+                     />
                   
                     </div>
                     <div>
@@ -199,7 +197,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     value={form.company}
                     onChange={(e) => update('company', e.target.value)}
                     className={fieldClass}
-                    placeholder="Acme Holdings" />
+                     />
                   
                     </div>
                     <div>
@@ -213,7 +211,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     value={form.email}
                     onChange={(e) => update('email', e.target.value)}
                     className={fieldClass}
-                    placeholder="jane@company.com" />
+                     />
                   
                     </div>
                     <div>
@@ -227,7 +225,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     value={form.phone}
                     onChange={(e) => update('phone', e.target.value)}
                     className={fieldClass}
-                    placeholder="+1 (212) 555-0198" />
+                     />
                   
                     </div>
                     <div>

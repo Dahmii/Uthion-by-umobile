@@ -16,11 +16,11 @@ export function Contact() {
             <div className="flex items-center mb-6">
               {/* <span className="w-8 h-[1px] bg-accent mr-4"></span> */}
               <span className="text-xs font-medium tracking-[0.2em] uppercase text-ink.muted">
-                Engage Uthion
+                Talk to Uthion
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ink leading-tight mb-6">
-              Ready to structure your next 
+              Ready for your next
               <span className="relative inline-block italic font-normal text-[#3300FF] font-serif tracking-normal">
               strategic move?
               <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#3300FF]/30 overflow-visible" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
@@ -29,9 +29,7 @@ export function Contact() {
               </span>
             </h2>
             <p className="text-lg text-ink.soft leading-relaxed mb-10 max-w-md">
-              Schedule a confidential consultation with our partners to discuss
-              your capital requirements, operational challenges, and growth
-              objectives.
+             Schedule a confidential consultation to discuss your business goals, operational challenges, and growth opportunities.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -65,7 +63,7 @@ export function Contact() {
             <div className="absolute -top-2 -left-2 w-[2px] h-8 bg-accent"></div>
 
             <h3 className="font-display text-2xl text-ink mb-8">
-              Direct Contact
+              Contact Us
             </h3>
 
             <div className="space-y-8">
