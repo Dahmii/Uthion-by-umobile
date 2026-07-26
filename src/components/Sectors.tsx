@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import financialImage from '../assets/finance.jpg';
+import financialImage from '../assets/finance.webp';
 import healthcareImage from '../assets/healthcare.jpg';
 
 export function Sectors() {
@@ -69,7 +69,7 @@ export function Sectors() {
             </h2>
           </div>
           <p className="text-sm sm:text-base text-stone-600 max-w-sm mt-6 md:mt-0 font-normal leading-relaxed">
-            Our experience spans multiple industries, helping businesses strengthen strategy, secure funding, and improve performance.
+            We've worked alongside businesses across key industries, helping them solve real business challenges.
           </p>
         </div>
 
@@ -82,11 +82,12 @@ export function Sectors() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group cursor-pointer flex flex-col justify-between"
+              className="group cursor-pointer flex flex-col h-full"
             >
-              <div>
+              {/* Top Container - Standardized Height */}
+              <div className="flex-1 flex flex-col justify-between">
                 {/* Image Wrapper */}
-                <div className="relative h-[260px] sm:h-[320px] w-full overflow-hidden rounded-[1.5rem] mb-6 border border-stone-300/80">
+                <div className="relative h-[260px] sm:h-[320px] w-full overflow-hidden rounded-[1.5rem] mb-6 border border-stone-300/80 flex-shrink-0">
                   <img
                     src={sector.image}
                     alt={sector.title}
@@ -101,34 +102,36 @@ export function Sectors() {
                 </h3>
               </div>
 
-              {/* Vertical Checkmark List */}
-              <ul className="space-y-3 pt-4 border-t border-stone-200/80">
-                {sector.services.map((service, sIdx) => (
-                  <li key={sIdx} className="flex items-center gap-3">
-                    {/* Checkmark Circle Icon */}
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-stone-200/80 border border-stone-300 flex items-center justify-center text-stone-900 group-hover:bg-[#3300FF] group-hover:border-[#3300FF] group-hover:text-white transition-all duration-300">
-                      <svg
-                        className="w-3 h-3"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        strokeWidth="3"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
+              {/* Vertical Checkmark List - Pushed to the Bottom */}
+              <div className="pt-4 border-t border-stone-200/80 min-h-[160px]">
+                <ul className="space-y-3">
+                  {sector.services.map((service, sIdx) => (
+                    <li key={sIdx} className="flex items-start gap-3">
+                      {/* Checkmark Circle Icon */}
+                      <div className="flex-shrink-0 w-5 h-5 mt-0.5 rounded-full bg-stone-200/80 border border-stone-300 flex items-center justify-center text-stone-900 group-hover:bg-[#3300FF] group-hover:border-[#3300FF] group-hover:text-white transition-all duration-300">
+                        <svg
+                          className="w-3 h-3"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          strokeWidth="3"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
 
-                    {/* Service Label */}
-                    <span className="text-sm sm:text-[0.95rem] font-medium text-stone-700 group-hover:text-stone-950 transition-colors">
-                      {service}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+                      {/* Service Label */}
+                      <span className="text-sm sm:text-[0.95rem] font-medium text-stone-700 group-hover:text-stone-950 transition-colors leading-snug">
+                        {service}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           ))}
         </div>

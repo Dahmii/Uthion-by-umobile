@@ -6,7 +6,7 @@ export function WhyChooseUs() {
     {
       title: 'Experience That Counts',
       description:
-        'Our team combines Big 4 + MBB experience to bring tier-one strategic clarity to your business operations.',
+        'Our team combines Big 4 + MBB experience.',
       tag: 'Tier-One Advisory',
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -22,7 +22,7 @@ export function WhyChooseUs() {
     {
       title: 'Focused on Growth',
       description:
-        'Our preference is for mid-sized and growing businesses ready to convert momentum into lasting market leadership.',
+        'Our preference is for mid-sized and growing businesses.',
       tag: 'Mid-Market Scale',
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@ export function WhyChooseUs() {
     {
       title: 'Built for Today',
       description:
-        "Our perspectives are shaped by today's evolving business landscape, cutting through legacy complexity with agile execution.",
+        "Our perspectives are shaped by today's evolving business landscape.",
       tag: 'Agile Execution',
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
