@@ -48,17 +48,17 @@ export function Footer() {
             </h4>
             <ul className="space-y-4 text-sm text-stone/80">
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <a className="hover:text-accent transition-colors">
                   Capital Structuring
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <a className="hover:text-accent transition-colors">
                   Corporate Strategy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <a className="hover:text-accent transition-colors">
                   Org Transformation
                 </a>
               </li>
@@ -90,13 +90,13 @@ export function Footer() {
             rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-paper transition-colors">
+            <a className="hover:text-paper transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-paper transition-colors">
+            <a className="hover:text-paper transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="hover:text-paper transition-colors">
+            <a className="hover:text-paper transition-colors">
               Legal Notice
             </a>
           </div>
