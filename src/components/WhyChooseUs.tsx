@@ -36,7 +36,7 @@ export function WhyChooseUs() {
       ),
     },
     {
-      title: 'Built for Today',
+      title: 'Built Today for Tomorrow',
       description:
         "Our perspectives are shaped by today's evolving business landscape.",
       tag: 'Agile Execution',

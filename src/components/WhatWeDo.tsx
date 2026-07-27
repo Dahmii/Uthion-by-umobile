@@ -2,12 +2,7 @@ import { motion } from 'framer-motion';
 export function WhatWeDo() {
   const services = [
   {
-    title: 'Capital Structuring',
-    points: 'Secure the right capital to fuel growth while managing financial risk.',
-    details: ['Debt & Equity Financing', 'M&A Advisory', 'Restructuring']
-  },
-  {
-    title: 'Corporate Strategy',
+    title: 'Business Strategy',
     points: 'Develop clear growth strategies that strengthen competitive positioning and drive long-term value.',
     details: ['Market Entry', 'Growth Roadmaps', 'Competitive Positioning']
   },
@@ -18,7 +13,13 @@ export function WhatWeDo() {
     'Leadership Alignment',
     'Change Management']
 
-  }];
+  },
+    {
+    title: 'Capital Structuring',
+    points: 'Secure the right capital to fuel growth while managing financial risk.',
+    details: ['Debt & Equity Financing', 'M&A Advisory', 'Restructuring']
+  }
+  ];
 
   return (
     <section id="what-we-do" className="py-32 bg-paper">
@@ -41,7 +42,7 @@ export function WhatWeDo() {
                to scale.
             </h2>
             <p className="text-lg text-ink.soft leading-relaxed mb-12 max-w-md">
-              From securing growth capital to executing strategy, we partner with businesses to build the capabilities and systems needed for sustainable growth.
+              From defining strategy to securing growth capital and building the capabilities and systems needed for sustainable growth, we partner with businesses to turn ambition into action.
             </p>
 
             <div className="hidden lg:block relative h-[400px] w-full mt-12">

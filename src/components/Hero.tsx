@@ -75,8 +75,7 @@ export function Hero() {
             variants={itemVariants}
             className="text-[1rem] sm:text-lg text-stone-600 leading-relaxed max-w-xl mb-10 px-2 sm:px-0 text-balance font-normal"
           >
-            Uthion partners with ambitious businesses to secure capital, refine
-            strategy, and build the capabilities that enable sustainable growth.
+            Uthion partners with ambitious businesses to define their strategy, secure the capital they need, and build the capabilities required for sustainable growth.
           </motion.p>
 
           {/* Highly Visible CTA Button */}
