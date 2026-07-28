@@ -129,7 +129,7 @@ export function Footer() {
           <p>
             &copy; {new Date().getFullYear()} Uthion by Uspace. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">Developed by Uspace</div>
+          <div className="flex space-x-6 mt-4 md:mt-0">Developed by Umobile Technologies</div>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-paper transition-colors">
               Privacy Policy
