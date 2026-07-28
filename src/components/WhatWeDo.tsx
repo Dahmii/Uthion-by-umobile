@@ -2,11 +2,13 @@ import { motion } from 'framer-motion';
 export function WhatWeDo() {
   const services = [
   {
+    id: 'business-strategy',
     title: 'Business Strategy',
     points: 'Develop clear growth strategies that strengthen competitive positioning and drive long-term value.',
     details: ['Market Entry', 'Growth Roadmaps', 'Competitive Positioning']
   },
   {
+    id: 'org-transformation',
     title: 'Organizational Transformation',
     points: 'Build the operation model and organizational capabilities needed to support sustainable growth.',
     details: ['Operational Excellence',
@@ -15,6 +17,7 @@ export function WhatWeDo() {
 
   },
     {
+    id: 'capital-structuring',
     title: 'Capital Structuring',
     points: 'Secure the right capital to fuel growth while managing financial risk.',
     details: ['Debt & Equity Financing', 'M&A Advisory', 'Restructuring']
@@ -42,7 +45,7 @@ export function WhatWeDo() {
                to scale.
             </h2>
             <p className="text-lg text-ink.soft leading-relaxed mb-12 max-w-md">
-              From defining strategy to securing growth capital and building the capabilities and systems needed for sustainable growth, we partner with businesses to turn ambition into action.
+              From defining the right strategy to building the capabilities to execute it and securing the capital to grow, we partner with businesses to turn ambition into action.
             </p>
 
             <div className="hidden lg:block relative h-[400px] w-full mt-12">
@@ -58,9 +61,10 @@ export function WhatWeDo() {
 
           {/* Right: Expanded Services List */}
           <div className="space-y-12">
-            {services.map((service, index) =>
+            {services.map((service) =>
             <motion.div
-              key={index}
+              key={service.id}
+              id={service.id}
               initial={{
                 opacity: 0,
                 y: 20
@@ -76,7 +80,7 @@ export function WhatWeDo() {
               transition={{
                 duration: 0.5
               }}
-              className="border-t border-stone pt-8 group">
+              className="border-t border-stone pt-8 group scroll-mt-32">
               
                 <div className="flex items-baseline justify-between mb-4">
                   <h3 className="font-display text-3xl text-ink group-hover:text-accent transition-colors">
@@ -88,9 +92,6 @@ export function WhatWeDo() {
                   <p className="text-sm text-ink.muted mb-2">
                     {service.points}
                   </p>
-                  {/* <p className="text-sm text-ink.soft">
-                    {service.outcome}
-                  </p> */}
                 </div>
 
                 <ul className="flex flex-wrap gap-3">
