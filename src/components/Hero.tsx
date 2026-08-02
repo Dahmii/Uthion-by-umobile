@@ -42,45 +42,43 @@ export function Hero() {
         className="absolute inset-0 bg-[linear-gradient(to_right,#00000015_1px,transparent_1px),linear-gradient(to_bottom,#00000015_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
       />
 
-      {/* OPTION 2: Floating Metric Cards (Desktop Only) */}
-      {/* Card Left: Tier-One Advisory */}
+      {/* FLOATING METRIC CARDS - Super Simple Words */}
+      {/* Card Left: What We Do */}
       <motion.div
         animate={{ y: [0, -12, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-        className="hidden lg:flex absolute left-6 xl:left-16 top-1/3 z-20 items-center gap-3 bg-white/80 backdrop-blur-md px-4 py-3 rounded-2xl border border-stone-300/80 shadow-xl shadow-stone-900/5 pointer-events-none"
+        className="hidden lg:flex absolute left-6 xl:left-16 top-1/3 z-20 items-center gap-3 bg-white/90 backdrop-blur-md px-4 py-3 rounded-2xl border border-stone-300/80 shadow-xl shadow-stone-900/5 pointer-events-none"
       >
-        {/* <div className="w-8 h-8 rounded-xl bg-[#3300FF]/10 text-[#3300FF] flex items-center justify-center font-bold text-xs">
-          MBB
+        {/* <div className="w-8 h-8 rounded-xl bg-[#3300FF]/10 text-[#3300FF] flex items-center justify-center font-bold text-base">
+          💡
         </div> */}
         <div>
-          <p className="text-[0.65rem] uppercase font-bold tracking-wider text-stone-400">Methodology</p>
-          <p className="text-xs font-bold text-stone-900">Tier-One Advisory</p>
+          <p className="text-[0.65rem] uppercase font-bold tracking-wider text-stone-400">Our Goal</p>
+          <p className="text-xs font-bold text-stone-900">We Help You Grow</p>
         </div>
       </motion.div>
 
-      {/* Card Right Top: Capital Raised */}
+      {/* Card Right Top: Money / Capital */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="hidden lg:flex absolute right-6 xl:right-16 top-1/3 z-20 items-center gap-3 bg-white/80 backdrop-blur-md px-4 py-3 rounded-2xl border border-stone-300/80 shadow-xl shadow-stone-900/5 pointer-events-none"
+        className="hidden lg:flex absolute right-6 xl:right-16 top-1/3 z-20 items-center gap-3 bg-white/90 backdrop-blur-md px-4 py-3 rounded-2xl border border-stone-300/80 shadow-xl shadow-stone-900/5 pointer-events-none"
       >
-        <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+        
         <div>
-          <p className="text-[0.65rem] uppercase font-bold tracking-wider text-stone-400">Track Record</p>
-          <p className="text-xs font-bold text-stone-900">$50M+ Capital Advisory</p>
+          <p className="text-[0.65rem] uppercase font-bold tracking-wider text-stone-400">Funding</p>
+          <p className="text-xs font-bold text-stone-900">Get Money To Scale</p>
         </div>
       </motion.div>
 
-      {/* Card Right Bottom: Scale Factor */}
+      {/* Card Right Bottom: Simple Plan */}
       <motion.div
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        className="hidden lg:flex absolute right-12 xl:right-28 top-2/3 z-20 items-center gap-3 bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-stone-300/80 shadow-xl shadow-stone-900/5 pointer-events-none"
+        className="hidden lg:flex absolute right-12 xl:right-28 top-2/3 z-20 items-center gap-3 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-stone-300/80 shadow-xl shadow-stone-900/5 pointer-events-none"
       >
-        <span className="text-xs font-mono font-extrabold text-[#3300FF] bg-[#3300FF]/10 px-2 py-0.5 rounded-md">
-          4x
-        </span>
-        <span className="text-xs font-bold text-stone-800">Growth Velocity</span>
+        
+        <span className="text-xs font-bold text-stone-800">Clear Step-by-Step Plans</span>
       </motion.div>
 
       {/* Main Content Area */}
@@ -91,13 +89,13 @@ export function Hero() {
           animate="visible"
           className="text-center flex flex-col items-center justify-center w-full"
         >
-          {/* Mobile Trust Badge (Visible on Mobile/Tablet only) */}
+          {/* Mobile Trust Badge */}
           <motion.div 
             variants={itemVariants} 
             className="lg:hidden mb-5 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-200/60 border border-stone-300/80 text-xs font-medium text-stone-700"
           >
             <span className="w-2 h-2 rounded-full bg-[#3300FF] animate-pulse" />
-            Tier-One Strategic Advisory
+            Simple Growth Strategies
           </motion.div>
 
           {/* Main Headline */}
