@@ -203,7 +203,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                         value={form.fullName}
                         onChange={(e) => update('fullName', e.target.value)}
                         className={fieldClass}
-                        placeholder="John Doe" // Added placeholders
+                        
                       />
                     </div>
                     <div>
@@ -217,7 +217,6 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                         value={form.company}
                         onChange={(e) => update('company', e.target.value)}
                         className={fieldClass}
-                        placeholder="Acme Corp"
                       />
                     </div>
                     <div>
@@ -232,7 +231,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                         value={form.email}
                         onChange={(e) => update('email', e.target.value)}
                         className={fieldClass}
-                        placeholder="john@acme.com"
+                        
                       />
                     </div>
                     <div>
