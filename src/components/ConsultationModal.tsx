@@ -1,28 +1,31 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { XIcon, CheckIcon } from 'lucide-react';
+import { XIcon, CheckIcon, Loader2 } from 'lucide-react'; // Added Loader2 icon
+
 interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
 const INDUSTRIES = [
-'Real Estate',
-'Aviation',
-'Financial Services',
-'Technology',
-'Manufacturing',
-'Energy',
-'Healthcare',
-'Consumer Goods',
-'Other'];
+  'Real Estate',
+  'Aviation',
+  'Financial Services',
+  'Technology',
+  'Manufacturing',
+  'Energy',
+  'Healthcare',
+  'Consumer Goods',
+  'Other',
+];
 
 const COMPANY_SIZES = [
-'1–50 employees',
-'51–200 employees',
-'201–1,000 employees',
-'1,001–5,000 employees',
-'5,001+ employees'];
-
+  '1–50 employees',
+  '51–200 employees',
+  '201–1,000 employees',
+  '1,001–5,000 employees',
+  '5,001+ employees',
+];
 
 interface FormState {
   fullName: string;
@@ -31,9 +34,10 @@ interface FormState {
   phone: string;
   industry: string;
   companySize: string;
-  services: string[];
+  services: string[]; // Keeping this if you plan to use it later
   challenge: string;
 }
+
 const INITIAL_FORM: FormState = {
   fullName: '',
   company: '',
@@ -42,13 +46,20 @@ const INITIAL_FORM: FormState = {
   industry: '',
   companySize: '',
   services: [],
-  challenge: ''
+  challenge: '',
 };
+
 export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
+  
+  // NEW: Submission Status State
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const dialogRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
+
   // Lock body scroll + ESC to close + focus first field
   useEffect(() => {
     if (!isOpen) return;
@@ -65,110 +76,117 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
       clearTimeout(t);
     };
   }, [isOpen, onClose]);
+
   // Reset form shortly after close so the thank-you state isn't visible on reopen
   useEffect(() => {
     if (isOpen) return;
     const t = setTimeout(() => {
       setForm(INITIAL_FORM);
       setSubmitted(false);
+      setError(null); // Reset error state on close
     }, 300);
     return () => clearTimeout(t);
   }, [isOpen]);
+
   const update = (key: keyof FormState, value: string) =>
-  setForm((f) => ({
-    ...f,
-    [key]: value
-  }));
- 
-  const handleSubmit = (e: React.FormEvent) => {
+    setForm((f) => ({
+      ...f,
+      [key]: value,
+    }));
+
+  // NEW: Updated Submit Handler
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In production this would POST to an advisory intake endpoint / CRM.
-    setSubmitted(true);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // POST the form data to our Vercel API endpoint
+      const response = await fetch('/api/send-consultation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Handle server-side validation or sending errors
+        throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+
+      // Success! Show thank you state
+      setSubmitted(true);
+    } catch (err) {
+      // Handle network errors or thrown errors
+      console.error('Submission Error:', err);
+      setError(err instanceof Error ? err.message : 'Failed to submit inquiry.');
+    } finally {
+      // Always stop loading spinner
+      setIsLoading(false);
+    }
   };
+
   const fieldClass =
-  'w-full bg-transparent border-b border-stone py-3 text-ink placeholder-ink.muted/60 focus:outline-none focus:border-accent transition-colors';
+    'w-full bg-transparent border-b border-stone py-3 text-ink placeholder-ink.muted/60 focus:outline-none focus:border-accent transition-colors disabled:opacity-60'; // Added disabled style
   const labelClass =
-  'block text-xs font-semibold tracking-widest uppercase text-ink.muted mb-1';
+    'block text-xs font-semibold tracking-widest uppercase text-ink.muted mb-1';
+
   return (
     <AnimatePresence>
-      {isOpen &&
-      <motion.div
-        initial={{
-          opacity: 0
-        }}
-        animate={{
-          opacity: 1
-        }}
-        exit={{
-          opacity: 0
-        }}
-        transition={{
-          duration: 0.25
-        }}
-        className="fixed inset-0 z-[100] flex items-start md:items-center justify-center p-0 md:p-6"
-        aria-hidden={!isOpen}>
-        
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-[100] flex items-start md:items-center justify-center p-0 md:p-6"
+          aria-hidden={!isOpen}
+        >
           {/* Backdrop */}
           <div
-          className="absolute inset-0 bg-ink/50 backdrop-blur-sm"
-          onClick={onClose} />
-        
+            className="absolute inset-0 bg-ink/50 backdrop-blur-sm cursor-pointer" // Added cursor-pointer
+            onClick={isLoading ? undefined : onClose} // Prevent closing while loading
+          />
 
           {/* Panel */}
           <motion.div
-          ref={dialogRef}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="consultation-title"
-          initial={{
-            opacity: 0,
-            y: 24,
-            scale: 0.98
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: 1
-          }}
-          exit={{
-            opacity: 0,
-            y: 24,
-            scale: 0.98
-          }}
-          transition={{
-            duration: 0.3,
-            ease: 'easeOut'
-          }}
-          className="relative bg-paper w-full max-w-2xl max-h-screen md:max-h-[90vh] overflow-y-auto shadow-2xl">
-          
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="consultation-title"
+            initial={{ opacity: 0, y: 24, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 24, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="relative bg-paper w-full max-w-2xl max-h-screen md:max-h-[90vh] overflow-y-auto shadow-2xl"
+          >
             {/* Accent corner detail */}
             <div className="absolute top-0 left-0 w-12 h-[2px] bg-accent" />
             <div className="absolute top-0 left-0 w-[2px] h-12 bg-accent" />
 
             <button
-            onClick={onClose}
-            aria-label="Close consultation form"
-            className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full flex items-center justify-center text-ink.muted hover:text-ink hover:bg-stone/40 transition-colors">
-            
+              onClick={onClose}
+              disabled={isLoading} // Disable close button while loading
+              aria-label="Close consultation form"
+              className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full flex items-center justify-center text-ink.muted hover:text-ink hover:bg-stone/40 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
               <XIcon size={20} />
             </button>
 
-            {!submitted ?
-          <div className="p-8 md:p-12">
-                {/* <div className="flex items-center mb-4">
-                  <span className="w-8 h-[1px] bg-accent mr-4" />
-                  <span className="text-xs font-medium tracking-[0.2em] uppercase text-ink.muted">
-                    Request a Consultation
-                  </span>
-                </div> */}
+            {!submitted ? (
+              <div className="p-8 md:p-12">
                 <h2
-              id="consultation-title"
-              className="font-display text-3xl md:text-4xl text-ink leading-tight mb-3">
-              
+                  id="consultation-title"
+                  className="font-display text-3xl md:text-4xl text-ink leading-tight mb-3"
+                >
                   Tell us about your business objectives.
                 </h2>
                 <p className="text-ink.soft leading-relaxed mb-10 max-w-lg">
-                  Our advisory team will review your request and recommend next steps. We treat every inquiry with complete confidentiality.
+                  Our advisory team will review your request and recommend next
+                  steps. We treat every inquiry with complete confidentiality.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-8">
@@ -178,75 +196,80 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                         Full Name
                       </label>
                       <input
-                    ref={firstFieldRef}
-                    id="fullName"
-                    required
-                    value={form.fullName}
-                    onChange={(e) => update('fullName', e.target.value)}
-                    className={fieldClass}
-                     />
-                  
+                        ref={firstFieldRef}
+                        id="fullName"
+                        required
+                        disabled={isLoading} // Disable input while loading
+                        value={form.fullName}
+                        onChange={(e) => update('fullName', e.target.value)}
+                        className={fieldClass}
+                        placeholder="John Doe" // Added placeholders
+                      />
                     </div>
                     <div>
                       <label className={labelClass} htmlFor="company">
                         Company Name
                       </label>
                       <input
-                    id="company"
-                    required
-                    value={form.company}
-                    onChange={(e) => update('company', e.target.value)}
-                    className={fieldClass}
-                     />
-                  
+                        id="company"
+                        required
+                        disabled={isLoading}
+                        value={form.company}
+                        onChange={(e) => update('company', e.target.value)}
+                        className={fieldClass}
+                        placeholder="Acme Corp"
+                      />
                     </div>
                     <div>
                       <label className={labelClass} htmlFor="email">
                         Work Email
                       </label>
                       <input
-                    id="email"
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => update('email', e.target.value)}
-                    className={fieldClass}
-                     />
-                  
+                        id="email"
+                        type="email"
+                        required
+                        disabled={isLoading}
+                        value={form.email}
+                        onChange={(e) => update('email', e.target.value)}
+                        className={fieldClass}
+                        placeholder="john@acme.com"
+                      />
                     </div>
                     <div>
                       <label className={labelClass} htmlFor="phone">
                         Phone Number
                       </label>
                       <input
-                    id="phone"
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={(e) => update('phone', e.target.value)}
-                    className={fieldClass}
-                     />
-                  
+                        id="phone"
+                        type="tel"
+                        required
+                        disabled={isLoading}
+                        value={form.phone}
+                        onChange={(e) => update('phone', e.target.value)}
+                        className={fieldClass}
+                        placeholder="+234..."
+                      />
                     </div>
                     <div>
                       <label className={labelClass} htmlFor="industry">
                         Industry
                       </label>
                       <select
-                    id="industry"
-                    required
-                    value={form.industry}
-                    onChange={(e) => update('industry', e.target.value)}
-                    className={`${fieldClass} cursor-pointer`}>
-                    
+                        id="industry"
+                        required
+                        disabled={isLoading}
+                        value={form.industry}
+                        onChange={(e) => update('industry', e.target.value)}
+                        className={`${fieldClass} cursor-pointer disabled:cursor-not-allowed`}
+                      >
                         <option value="" disabled>
                           Select industry
                         </option>
-                        {INDUSTRIES.map((i) =>
-                    <option key={i} value={i}>
+                        {INDUSTRIES.map((i) => (
+                          <option key={i} value={i}>
                             {i}
                           </option>
-                    )}
+                        ))}
                       </select>
                     </div>
                     <div>
@@ -254,62 +277,80 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                         Company Size
                       </label>
                       <select
-                    id="companySize"
-                    required
-                    value={form.companySize}
-                    onChange={(e) => update('companySize', e.target.value)}
-                    className={`${fieldClass} cursor-pointer`}>
-                    
+                        id="companySize"
+                        required
+                        disabled={isLoading}
+                        value={form.companySize}
+                        onChange={(e) => update('companySize', e.target.value)}
+                        className={`${fieldClass} cursor-pointer disabled:cursor-not-allowed`}
+                      >
                         <option value="" disabled>
                           Select size
                         </option>
-                        {COMPANY_SIZES.map((s) =>
-                    <option key={s} value={s}>
+                        {COMPANY_SIZES.map((s) => (
+                          <option key={s} value={s}>
                             {s}
                           </option>
-                    )}
+                        ))}
                       </select>
                     </div>
                   </div>
 
-                 
-
                   <div>
                     <label className={labelClass} htmlFor="challenge">
-                      Brief tell us about your business needs
+                      Briefly tell us about your business needs
                     </label>
                     <textarea
-                  id="challenge"
-                  required
-                  rows={4}
-                  value={form.challenge}
-                  onChange={(e) => update('challenge', e.target.value)}
-                  className={`${fieldClass} resize-none`}
-                  placeholder="Tell us about your business challenge, objective, or what you'd like to discuss." />
-                
+                      id="challenge"
+                      required
+                      disabled={isLoading}
+                      rows={4}
+                      value={form.challenge}
+                      onChange={(e) => update('challenge', e.target.value)}
+                      className={`${fieldClass} resize-none disabled:placeholder:opacity-50`}
+                      placeholder="Tell us about your business challenge, objective, or what you'd like to discuss."
+                    />
                   </div>
 
                   <div className="pt-2">
+                    {/* NEW: Error Message Display */}
+                    {error && (
+                      <div className="bg-red-50 text-red-700 text-sm p-4 rounded-xl mb-6 border border-red-200">
+                        Error: {error}
+                      </div>
+                    )}
+
                     <button
-                  type="submit"
-                  className="group w-full md:w-auto inline-flex items-center justify-center bg-ink text-white px-10 py-4 text-sm font-medium rounded-full hover:bg-accent transition-colors">
-                  
-                      Submit Request
-                      <svg
-                    className="ml-2 transition-transform group-hover:translate-x-1"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5">
-                    
-                        <path
-                      d="M3 8H13M13 8L9 4M13 8L9 12"
-                      strokeLinecap="round"
-                      strokeLinejoin="round" />
-                    
-                      </svg>
+                      type="submit"
+                      disabled={isLoading} // Disable button while loading
+                      className="group w-full md:w-auto inline-flex items-center justify-center bg-ink text-white px-10 py-4 text-sm font-medium rounded-full hover:bg-accent transition-colors disabled:bg-stone disabled:cursor-not-allowed"
+                    >
+                      {/* NEW: Loading Spinner logic */}
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="mr-3 h-5 w-5 animate-spin" />
+                          Sending Inquiry...
+                        </>
+                      ) : (
+                        <>
+                          Submit Request
+                          <svg
+                            className="ml-2 transition-transform group-hover:translate-x-1"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                          >
+                            <path
+                              d="M3 8H13M13 8L9 4M13 8L9 12"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </>
+                      )}
                     </button>
                     <p className="text-xs text-ink.muted mt-4">
                       By submitting, you agree to be contacted by Uthion's
@@ -317,22 +358,14 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                     </p>
                   </div>
                 </form>
-              </div> :
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 12
-            }}
-            animate={{
-              opacity: 1,
-              y: 0
-            }}
-            transition={{
-              duration: 0.4
-            }}
-            className="p-8 md:p-16 text-center flex flex-col items-center justify-center min-h-[420px]">
-            
+              </div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="p-8 md:p-16 text-center flex flex-col items-center justify-center min-h-[420px]"
+              >
                 <div className="w-16 h-16 rounded-full border border-accent flex items-center justify-center mb-8 text-accent">
                   <CheckIcon size={28} />
                 </div>
@@ -344,16 +377,16 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                   within 1–2 business days to discuss potential next steps.
                 </p>
                 <button
-              onClick={onClose}
-              className="border border-stone text-ink px-8 py-3 text-sm font-medium rounded-full hover:border-ink transition-colors">
-              
+                  onClick={onClose}
+                  className="border border-stone text-ink px-8 py-3 text-sm font-medium rounded-full hover:border-ink transition-colors cursor-pointer"
+                >
                   Close
                 </button>
               </motion.div>
-          }
+            )}
           </motion.div>
         </motion.div>
-      }
-    </AnimatePresence>);
-
+      )}
+    </AnimatePresence>
+  );
 }

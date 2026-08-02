@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false); // State to handle mobile menu visibility
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,14 +16,30 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({
-        behavior: 'smooth'
-      });
+  const handleLogoClick = () => {
+    setIsOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  };
+
+  const scrollTo = (id: string) => {
     setIsOpen(false); // Close mobile menu after clicking a link
+
+    if (location.pathname !== '/') {
+      // If we are on a legal page, redirect to home and pass the section ID in state
+      navigate('/', { state: { scrollTo: id } });
+    } else {
+      // If we are already on home page, scroll directly
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    }
   };
 
   return (
@@ -38,7 +58,7 @@ export function Navbar() {
             src="./ulogo.svg" 
             alt="Uthion Logo" 
             className="cursor-pointer" 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            onClick={handleLogoClick} 
           />
         </div>
 
@@ -47,16 +67,16 @@ export function Navbar() {
           
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center space-x-8 text-sm font-medium text-ink.soft">
-            <button onClick={() => scrollTo('what-we-do')} className="hover:text-accent transition-colors">
+            <button onClick={() => scrollTo('what-we-do')} className="hover:text-accent transition-colors cursor-pointer">
               Expertise
             </button>
-            <button onClick={() => scrollTo('process')} className="hover:text-accent transition-colors">
+            <button onClick={() => scrollTo('process')} className="hover:text-accent transition-colors cursor-pointer">
               Process
             </button>
-            <button onClick={() => scrollTo('sectors')} className="hover:text-accent transition-colors">
+            <button onClick={() => scrollTo('sectors')} className="hover:text-accent transition-colors cursor-pointer">
               Industries
             </button>
-            <button onClick={() => scrollTo('contact')} className="hover:text-accent transition-colors">
+            <button onClick={() => scrollTo('contact')} className="hover:text-accent transition-colors cursor-pointer">
               Contact
             </button>
           </div>
@@ -64,7 +84,7 @@ export function Navbar() {
           {/* Mobile Hamburger Toggle Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-ink focus:outline-none z-50"
+            className="lg:hidden p-2 text-ink focus:outline-none z-50 cursor-pointer"
             aria-label="Toggle Menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,16 +108,16 @@ export function Navbar() {
         }`}
       >
         <div className="flex flex-col p-6 space-y-5 text-base font-medium text-ink">
-          <button onClick={() => scrollTo('what-we-do')} className="text-left py-2 border-b border-stone/30 hover:text-accent">
+          <button onClick={() => scrollTo('what-we-do')} className="text-left py-2 border-b border-stone/30 hover:text-accent cursor-pointer">
             Expertise
           </button>
-          <button onClick={() => scrollTo('process')} className="text-left py-2 border-b border-stone/30 hover:text-accent">
+          <button onClick={() => scrollTo('process')} className="text-left py-2 border-b border-stone/30 hover:text-accent cursor-pointer">
             Process
           </button>
-          <button onClick={() => scrollTo('sectors')} className="text-left py-2 border-b border-stone/30 hover:text-accent">
+          <button onClick={() => scrollTo('sectors')} className="text-left py-2 border-b border-stone/30 hover:text-accent cursor-pointer">
             Industries
           </button>
-          <button onClick={() => scrollTo('contact')} className="text-left py-2 text-ink.soft hover:text-accent">
+          <button onClick={() => scrollTo('contact')} className="text-left py-2 text-ink.soft hover:text-accent cursor-pointer">
             Contact
           </button>
         </div>

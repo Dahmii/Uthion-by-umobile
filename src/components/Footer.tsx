@@ -37,7 +37,7 @@ export function Footer() {
   </a>
 
   {/* X / Twitter */}
-  <a
+  {/* <a
     href="#"
     className="w-10 h-10 rounded-full border border-stone/20 flex items-center justify-center text-stone/60 hover:text-paper hover:border-paper transition-colors"
   >
@@ -50,7 +50,7 @@ export function Footer() {
     >
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
-  </a>
+  </a> */}
 
   {/* Instagram */}
   <a
@@ -154,13 +154,13 @@ export function Footer() {
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">Developed by Umobile Technologies</div>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-paper transition-colors">
+            <a href="/privacy" className="hover:text-paper transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-paper transition-colors">
+            <a href="/terms" className="hover:text-paper transition-colors">
               Terms of Service
             </a>
-            <a href="#" className="hover:text-paper transition-colors">
+            <a href="/legal" className="hover:text-paper transition-colors">
               Legal Notice
             </a>
           </div>
