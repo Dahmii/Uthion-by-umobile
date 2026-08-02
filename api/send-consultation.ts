@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Define the recipient email (Olumide/Uthion intake)
 const INTAKE_EMAIL = 'info@uthion.com'; // TODO: Change this to the real intake email
-const FROM_EMAIL = 'onboarding@resend.dev'; // TODO: Once domain is verified in Resend, change to e.g., 'intake@uthion.com'
+const FROM_EMAIL = 'Uthion Web Forms <info@uthion.com>'; // TODO: Once domain is verified in Resend, change to e.g., 'intake@uthion.com'
 
 export default async function handler(
   request: VercelRequest,
