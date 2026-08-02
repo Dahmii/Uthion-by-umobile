@@ -5,7 +5,7 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Define the recipient email (Olumide/Uthion intake)
-const INTAKE_EMAIL = 'contact@uthion.com'; // TODO: Change this to the real intake email
+const INTAKE_EMAIL = 'info@uthion.com'; // TODO: Change this to the real intake email
 const FROM_EMAIL = 'onboarding@resend.dev'; // TODO: Once domain is verified in Resend, change to e.g., 'intake@uthion.com'
 
 export default async function handler(
