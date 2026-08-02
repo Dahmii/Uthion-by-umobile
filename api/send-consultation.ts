@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Define the recipient email (Olumide/Uthion intake)
 const INTAKE_EMAIL = 'info@uthion.com'; // TODO: Change this to the real intake email
-const FROM_EMAIL = 'Uthion Web Forms <info@uthion.com>'; // TODO: Once domain is verified in Resend, change to e.g., 'intake@uthion.com'
+const FROM_EMAIL = 'Uthion Web Submission'; // TODO: Once domain is verified in Resend, change to e.g., 'intake@uthion.com'
 
 export default async function handler(
   request: VercelRequest,
@@ -42,7 +42,7 @@ export default async function handler(
       reply_to: email, // Allows Olumide to click 'Reply' directly
       html: `
         <div style="font-family: sans-serif; max-width: 600px; color: #1C1917;">
-          <h2 style="border-bottom: 2px solid #3300FF; padding-bottom: 10px; font-weight: 300;">New Advisory Inquiry</h2>
+          <h2 style="border-bottom: 2px solid #3300FF; padding-bottom: 10px; font-weight: 300;">New Consultation Inquiry</h2>
           
           <p style="margin-top: 20px;">A new consultation request has been submitted via the Uthion website.</p>
           
@@ -79,7 +79,7 @@ export default async function handler(
           </div>
 
           <p style="margin-top: 40px; text-align: center; font-size: 12px; color: #78716C;">
-            This request was submitted via the Uthion Consultation Modal.
+            This request was submitted via Uthion Website.
           </p>
         </div>
       `,
