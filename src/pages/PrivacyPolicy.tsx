@@ -84,7 +84,7 @@ export function PrivacyPolicy() {
                 </h3>
                 <ul className="text-sm space-y-1 text-stone-600 list-disc list-inside">
                   <li>IP address</li>
-                  <li>Browser & device details</li>
+                  <li>Browser details</li>
                   <li>Website usage metrics</li>
                 </ul>
               </div>
