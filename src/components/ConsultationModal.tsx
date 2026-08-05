@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { COUNTRY_CODES } from '../data/countryCodes';
 import { AnimatePresence, motion } from 'framer-motion';
-import { XIcon, CheckIcon, Loader2 } from 'lucide-react'; // Added Loader2 icon
+import { XIcon, CheckIcon, Loader2 } from 'lucide-react';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -34,7 +35,7 @@ interface FormState {
   phone: string;
   industry: string;
   companySize: string;
-  services: string[]; // Keeping this if you plan to use it later
+  services: string[];
   challenge: string;
 }
 
@@ -51,9 +52,8 @@ const INITIAL_FORM: FormState = {
 
 export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
+  const [countryCode, setCountryCode] = useState('+234'); // Defaults to Nigeria
   const [submitted, setSubmitted] = useState(false);
-  
-  // NEW: Submission Status State
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -82,8 +82,9 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
     if (isOpen) return;
     const t = setTimeout(() => {
       setForm(INITIAL_FORM);
+      setCountryCode('+234');
       setSubmitted(false);
-      setError(null); // Reset error state on close
+      setError(null);
     }, 300);
     return () => clearTimeout(t);
   }, [isOpen]);
@@ -94,43 +95,49 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
       [key]: value,
     }));
 
-  // NEW: Updated Submit Handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
+    // Combine country extension code with the local phone number entered
+    const fullPhoneNumber = `${countryCode}${form.phone.trim()}`;
+
     try {
-      // POST the form data to our Vercel API endpoint
+      // POST the payload formatted to match the backend expectation
       const response = await fetch('/api/send-consultation', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          fullName: form.fullName,
+          company: form.company,
+          workEmail: form.email,
+          phone: fullPhoneNumber,
+          industry: form.industry,
+          timeline: form.companySize,
+          projectOverview: form.challenge,
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        // Handle server-side validation or sending errors
         throw new Error(data.error || 'Something went wrong. Please try again.');
       }
 
-      // Success! Show thank you state
       setSubmitted(true);
     } catch (err) {
-      // Handle network errors or thrown errors
       console.error('Submission Error:', err);
       setError(err instanceof Error ? err.message : 'Failed to submit inquiry.');
     } finally {
-      // Always stop loading spinner
       setIsLoading(false);
     }
   };
 
   const fieldClass =
-    'w-full bg-transparent border-b border-stone py-3 text-ink placeholder-ink.muted/60 focus:outline-none focus:border-accent transition-colors disabled:opacity-60'; // Added disabled style
+    'w-full bg-transparent border-b border-stone py-3 text-ink placeholder-ink.muted/60 focus:outline-none focus:border-accent transition-colors disabled:opacity-60';
   const labelClass =
     'block text-xs font-semibold tracking-widest uppercase text-ink.muted mb-1';
 
@@ -147,8 +154,8 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
         >
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-ink/50 backdrop-blur-sm cursor-pointer" // Added cursor-pointer
-            onClick={isLoading ? undefined : onClose} // Prevent closing while loading
+            className="absolute inset-0 bg-ink/50 backdrop-blur-sm cursor-pointer"
+            onClick={isLoading ? undefined : onClose}
           />
 
           {/* Panel */}
@@ -169,7 +176,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
 
             <button
               onClick={onClose}
-              disabled={isLoading} // Disable close button while loading
+              disabled={isLoading}
               aria-label="Close consultation form"
               className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full flex items-center justify-center text-ink.muted hover:text-ink hover:bg-stone/40 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -199,11 +206,10 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                         ref={firstFieldRef}
                         id="fullName"
                         required
-                        disabled={isLoading} // Disable input while loading
+                        disabled={isLoading}
                         value={form.fullName}
                         onChange={(e) => update('fullName', e.target.value)}
                         className={fieldClass}
-                        
                       />
                     </div>
                     <div>
@@ -231,23 +237,36 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                         value={form.email}
                         onChange={(e) => update('email', e.target.value)}
                         className={fieldClass}
-                        
                       />
                     </div>
                     <div>
                       <label className={labelClass} htmlFor="phone">
                         Phone Number
                       </label>
-                      <input
-                        id="phone"
-                        type="tel"
-                        required
-                        disabled={isLoading}
-                        value={form.phone}
-                        onChange={(e) => update('phone', e.target.value)}
-                        className={fieldClass}
-                        placeholder="+234..."
-                      />
+                      <div className="flex rounded-md shadow-sm">
+                        <select
+                          value={countryCode}
+                          disabled={isLoading}
+                          onChange={(e) => setCountryCode(e.target.value)}
+                          className="inline-flex items-center rounded-l-md border border-r-0 border-stone bg-stone/20 px-2.5 text-sm text-ink focus:border-accent focus:outline-none disabled:opacity-50 max-w-[120px]"
+                        >
+                          {COUNTRY_CODES.map((c) => (
+                            <option key={`${c.code}-${c.dialCode}`} value={c.dialCode}>
+                              {c.name} {c.dialCode} 
+                            </option>
+                          ))}
+                        </select>
+                        <input
+                          id="phone"
+                          type="tel"
+                          required
+                          disabled={isLoading}
+                          value={form.phone}
+                          onChange={(e) => update('phone', e.target.value)}
+                          className={`${fieldClass} rounded-l-none border-l-0 border-b`}
+                          placeholder="801 234 5678"
+                        />
+                      </div>
                     </div>
                     <div>
                       <label className={labelClass} htmlFor="industry">
@@ -312,7 +331,6 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
                   </div>
 
                   <div className="pt-2">
-                    {/* NEW: Error Message Display */}
                     {error && (
                       <div className="bg-red-50 text-red-700 text-sm p-4 rounded-xl mb-6 border border-red-200">
                         Error: {error}
@@ -321,10 +339,9 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
 
                     <button
                       type="submit"
-                      disabled={isLoading} // Disable button while loading
+                      disabled={isLoading}
                       className="group w-full md:w-auto inline-flex items-center justify-center bg-ink text-white px-10 py-4 text-sm font-medium rounded-full hover:bg-accent transition-colors disabled:bg-stone disabled:cursor-not-allowed"
                     >
-                      {/* NEW: Loading Spinner logic */}
                       {isLoading ? (
                         <>
                           <Loader2 className="mr-3 h-5 w-5 animate-spin" />

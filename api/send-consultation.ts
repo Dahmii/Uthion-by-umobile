@@ -1,12 +1,14 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resend } from 'resend';
 
-// Initialize Resend with the API key from environment variables
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Define the recipient email (Olumide/Uthion intake)
-const INTAKE_EMAIL = 'info@uthion.com'; // TODO: Change this to the real intake email
-const FROM_EMAIL = 'Uthion Web Submission <notification@uthion.com>'; // TODO: Once domain is verified in Resend, change to e.g., 'intake@uthion.com'
+
+const INTAKE_EMAIL = 'info@uthion.com'; 
+const FROM_EMAIL = 'Uthion Web Submission <notification@uthion.com>';
+
+
 
 export default async function handler(
   request: VercelRequest,
@@ -39,7 +41,7 @@ export default async function handler(
       from: FROM_EMAIL, 
       to: INTAKE_EMAIL,
       subject: `New Consultation Request: ${fullName} (${company})`,
-      reply_to: email, // Allows Olumide to click 'Reply' directly
+      reply_to: email,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; color: #1C1917;">
           <h2 style="border-bottom: 2px solid #3300FF; padding-bottom: 10px; font-weight: 300;">New Consultation Inquiry</h2>
