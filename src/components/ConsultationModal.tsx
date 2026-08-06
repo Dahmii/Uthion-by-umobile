@@ -116,7 +116,7 @@ export function ConsultationModal({ isOpen, onClose }: ConsultationModalProps) {
           workEmail: form.email,
           phone: fullPhoneNumber,
           industry: form.industry,
-          timeline: form.companySize,
+          companySize: form.companySize,
           projectOverview: form.challenge,
         }),
       });
