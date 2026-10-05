@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import financialImage from '../assets/finance.webp';
 import healthcareImage from '../assets/healthcare.jpg';
+import realEstateImage from '../assets/realestate.jpg';
 
 export function Sectors() {
   const sectors = [
@@ -37,6 +38,14 @@ export function Sectors() {
       ],
       image:
         'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800',
+    },
+    {
+      title: 'Real Estate',
+      services: [
+        'Strategy Development',
+        'Talent sourcing',
+      ],
+      image: realEstateImage,
     },
   ];
 

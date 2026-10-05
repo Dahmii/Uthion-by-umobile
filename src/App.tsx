@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import { UnderConstruction } from './components/UnderConstruction';
 import { ConsultationProvider } from './context/ConsultationContext';
 import { Navbar } from './components/Navbar';
@@ -17,6 +17,7 @@ import { Footer } from './components/Footer';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsOfService } from './pages/TermsOfService';
 import { LegalNotice } from './pages/LegalNotice';
+import { NotFound } from './pages/NotFound';
 
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -39,6 +40,16 @@ function ScrollHandler() {
   return null;
 }
 
+function WebsiteLayout() {
+  return (
+    <>
+      <Navbar />
+      <main><Outlet /></main>
+      <Footer />
+    </>
+  );
+}
+
 export function App() {
   return (
     // <UnderConstruction />
@@ -46,9 +57,8 @@ export function App() {
       <ScrollHandler />
       <ConsultationProvider>
         <div className="min-h-screen bg-paper font-sans text-ink selection:bg-accent selection:text-white">
-          <Navbar />
-          <main>
             <Routes>
+              <Route element={<WebsiteLayout />}>
               {/* Home Page Route */}
               <Route
                 path="/"
@@ -87,9 +97,9 @@ export function App() {
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/legal" element={<LegalNotice />} />
+              </Route>
+              <Route path="*" element={<main><NotFound /></main>} />
             </Routes>
-          </main>
-          <Footer />
         </div>
       </ConsultationProvider>
     </BrowserRouter>

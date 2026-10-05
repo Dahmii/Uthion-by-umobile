@@ -21,3 +21,23 @@ body {
   background: #3300ff;
   color: #ffffff;
 }
+
+/* The compass searches briefly, then settles pointing home. */
+.not-found-needle {
+  transform-origin: center;
+  animation: not-found-find-north 4.5s ease-in-out both;
+}
+
+@keyframes not-found-find-north {
+  0% { transform: rotate(-140deg); }
+  45% { transform: rotate(390deg); }
+  70% { transform: rotate(345deg); }
+  85% { transform: rotate(365deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .not-found-needle {
+    animation: none;
+  }
+}

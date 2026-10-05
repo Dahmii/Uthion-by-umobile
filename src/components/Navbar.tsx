@@ -55,7 +55,7 @@ export function Navbar() {
         {/* Logo */}
         <div className="flex items-center w-8 space-x-4 md:space-x-6 z-50">
           <img 
-            src="./ulogo.svg" 
+            src="/ulogo.svg"
             alt="Uthion Logo" 
             className="cursor-pointer" 
             onClick={handleLogoClick} 
