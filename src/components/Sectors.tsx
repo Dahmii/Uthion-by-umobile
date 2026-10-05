@@ -42,7 +42,7 @@ export function Sectors() {
     {
       title: 'Real Estate',
       services: [
-        'Strategy Development',
+        'Strategy development',
         'Talent sourcing',
       ],
       image: realEstateImage,
